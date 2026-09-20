@@ -1,0 +1,2448 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل المستخدم الرسمي | لوحة تحكم الإدارة - مرحلة تهيئة وتأسيس النظام</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-dark: #020617;
+            --primary-light: #1e293b;
+            --accent: #c59b27;
+            --accent-light: #e5b94c;
+            --accent-subtle: #fef9c3;
+            --secondary: #3b82f6;
+            --success: #059669;
+            --success-bg: #ecfdf5;
+            --warning: #d97706;
+            --warning-bg: #fffbeb;
+            --danger: #dc2626;
+            --danger-bg: #fef2f2;
+            --info: #0284c7;
+            --info-bg: #f0f9ff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 15mm 12mm 15mm 12mm;
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff;
+                color: #000000;
+                font-size: 10.5pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-before: always !important;
+                break-before: page !important;
+            }
+            .avoid-break {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .manual-main {
+                margin-right: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .screenshot-card {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+            a {
+                text-decoration: none !important;
+                color: inherit !important;
+            }
+            .toc-item, .manual-section, .cover-page {
+                box-shadow: none !important;
+            }
+        }
+
+        .manual-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .manual-sidebar {
+            width: 320px;
+            background-color: var(--primary-dark);
+            color: #f8fafc;
+            padding: 2rem 1.25rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+            z-index: 1000;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent), #997316);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(197, 155, 39, 0.3);
+        }
+
+        .brand-text h2 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .brand-text span {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-actions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-print {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 14px;
+            background: linear-gradient(135deg, var(--accent), #b38b1f);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-print:hover {
+            background: linear-gradient(135deg, #d4a72c, var(--accent));
+            transform: translateY(-1px);
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-item-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            padding-right: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .nav-link.active {
+            background: rgba(197, 155, 39, 0.18);
+            color: var(--accent-light);
+            border-right: 3px solid var(--accent);
+        }
+
+        .nav-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+
+        .manual-main {
+            flex: 1;
+            margin-right: 320px;
+            padding: 2.5rem;
+            max-width: calc(100vw - 320px);
+        }
+
+        @media (max-width: 1024px) {
+            .manual-sidebar {
+                display: none;
+            }
+            .manual-main {
+                margin-right: 0;
+                padding: 1.25rem;
+                max-width: 100vw;
+            }
+        }
+
+        .manual-content-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .cover-page {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 3.5rem 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(197, 155, 39, 0.2) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .cover-subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 800px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cover-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        .info-val {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-weight: 700;
+        }
+
+        .toc-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .toc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .toc-header h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .toc-item:hover {
+            background: #ffffff;
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .toc-num {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-md);
+            background: var(--primary);
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .toc-body h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .toc-body p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .manual-section {
+            margin-bottom: 4rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 2.75rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            scroll-margin-top: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: #f1f5f9;
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        .section-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .subsection-block {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .subsection-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .subsection-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 22px;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .breadcrumb-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: var(--radius-md);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .breadcrumb-box b {
+            color: var(--primary);
+        }
+
+        .screenshot-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 1.5rem 0 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .screenshot-header {
+            background: #f1f5f9;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+        }
+
+        .browser-dot.red { background: #f87171; }
+        .browser-dot.yellow { background: #fbbf24; }
+        .browser-dot.green { background: #34d399; }
+
+        .screenshot-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .screenshot-actions a {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .screenshot-img-wrap {
+            background: #ffffff;
+            display: block;
+            text-align: center;
+            padding: 4px;
+        }
+
+        .screenshot-img {
+            width: 100%;
+            height: auto;
+            max-height: 650px;
+            object-fit: contain;
+            display: block;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        }
+
+        .screenshot-caption {
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            background: #ffffff;
+            border-top: 1px solid #f1f5f9;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            font-size: 0.88rem;
+        }
+
+        .data-table th {
+            background: #f8fafc;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 12px 16px;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background-color: #fdfdfd;
+        }
+
+        .field-name {
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-req {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .badge-req.required {
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        .badge-req.optional {
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .field-type {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #eff6ff;
+            color: var(--secondary);
+            font-size: 0.75rem;
+            font-family: monospace;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 18px;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            border-right: 4px solid var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .step-item.accent {
+            border-right-color: var(--accent);
+            background: #fffdf5;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .step-item.accent .step-num {
+            background: var(--accent);
+        }
+
+        .step-text {
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .step-text strong {
+            color: var(--primary);
+        }
+
+        .callout {
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .callout-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .callout.tip {
+            background: var(--success-bg);
+            border-right: 4px solid var(--success);
+            color: #065f46;
+        }
+
+        .callout.warning {
+            background: var(--warning-bg);
+            border-right: 4px solid var(--warning);
+            color: #92400e;
+        }
+
+        .callout.important {
+            background: var(--danger-bg);
+            border-right: 4px solid var(--danger);
+            color: #991b1b;
+        }
+
+        .manual-footer {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="manual-wrapper">
+
+    <!-- Sticky Navigation Sidebar (Screen Only) -->
+    <aside class="manual-sidebar no-print">
+        <div class="sidebar-brand">
+            <div class="brand-logo-icon">S</div>
+            <div class="brand-text">
+                <h2>سمو الذهبية</h2>
+                <span>دليل تشغيل الإدارة VIP</span>
+            </div>
+        </div>
+
+        <div class="sidebar-actions">
+            <button class="btn-print" onclick="window.print()">
+                <span>🖨️ طباعة الدليل (A4)</span>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item-title">المحتويات الأساسية</div>
+            <a href="#intro" class="nav-link">
+                <span>المقدمة والمنظومة</span>
+                <span class="nav-badge">00</span>
+            </a>
+            <a href="#sec-settings" class="nav-link">
+                <span>1. إعدادات النظام والهوية</span>
+                <span class="nav-badge">01</span>
+            </a>
+            <a href="#sec-admins" class="nav-link">
+                <span>2. المشرفون والصلاحيات</span>
+                <span class="nav-badge">02</span>
+            </a>
+            <a href="#sec-master" class="nav-link">
+                <span>3. البيانات المرجعية</span>
+                <span class="nav-badge">03</span>
+            </a>
+            <a href="#sec-fleet" class="nav-link">
+                <span>4. أسطول المركبات</span>
+                <span class="nav-badge">04</span>
+            </a>
+            <a href="#sec-pricing" class="nav-link">
+                <span>5. قواعد التسعير والتجديد</span>
+                <span class="nav-badge">05</span>
+            </a>
+            <a href="#sec-packages" class="nav-link">
+                <span>6. باقات الحجز والعروض</span>
+                <span class="nav-badge">06</span>
+            </a>
+            <a href="#sec-messaging" class="nav-link">
+                <span>7. مركز الرسائل و SMS</span>
+                <span class="nav-badge">07</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Flow -->
+    <main class="manual-main">
+        <div class="manual-content-inner">
+
+            <!-- Cover Page / Hero -->
+            <header class="cover-page avoid-break">
+                <div class="cover-meta">
+                    <span>🏢 شركة سمو الذهبية لخدمات النقل الفاخر (Aldikka VIP)</span>
+                    <span>•</span>
+                    <span>الإصدار التشغيلي: v2.4</span>
+                </div>
+                <h1 class="cover-title">دليل المستخدم الرسمي للوحة تحكم الإدارة</h1>
+                <h2 style="font-size: 1.4rem; color: var(--accent-light); font-weight: 700; margin-bottom: 1rem;">
+                    المجلد الأول: دليل تهيئة وتأسيس البنية التحتية للنظام (System Setup & Initialization)
+                </h2>
+                <p class="cover-subtitle">
+                    مرجع تدريبي وتوثيقي شامل مصمم لمديري العمليات، مسؤولي تقنية المعلومات، والمشرفين الإداريين؛ يوضح بالتفصيل خطوات ضبط المنظومة، تأسيس السجلات القانونية، إدارة الأسطول، وهندسة محرك التسعير قبل إطلاق العمليات التشغيلية الميدانية.
+                </p>
+
+                <div class="cover-info-grid">
+                    <div class="info-card">
+                        <span class="info-label">النظام المستهدف</span>
+                        <span class="info-val">Aldikka Admin Dashboard</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">رابط المنظومة</span>
+                        <span class="info-val">admin.aldikka.com</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">تاريخ الإصدار والاعتماد</span>
+                        <span class="info-val">سبتمبر 2026 م</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">حالة الوثيقة</span>
+                        <span class="info-val" style="color: #34d399;">معتمد رسمي للتدريب والتشغيل</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Table of Contents Card -->
+            <section class="toc-card avoid-break">
+                <div class="toc-header">
+                    <h3>📑 فهرس محتويات مرحلة التأسيس</h3>
+                    <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">(7 فصول رئيسية - شاشات حقيقية موثقة)</span>
+                </div>
+                <div class="toc-grid">
+                    <a href="#sec-settings" class="toc-item">
+                        <div class="toc-num">01</div>
+                        <div class="toc-body">
+                            <h4>إعدادات النظام والهوية</h4>
+                            <p>بوابة الإعدادات، بيانات المنشأة، الضرائب 15%، قنوات الاتصال، وبوابات التسويق.</p>
+                        </div>
+                    </a>
+                    <a href="#sec-admins" class="toc-item">
+                        <div class="toc-num">02</div>
+                        <div class="toc-body">
+                            <h4>المشرفون والأدوار (RBAC)</h4>
+                            <p>إدارة الحسابات، توزيع الصلاحيات، ومصفوفة التحكم في العمليات.</p>
+                        </div>
+                    </a>
+                    <a href="#sec-master" class="toc-item">
+                        <div class="toc-num">03</div>
+                        <div class="toc-body">
+                            <h4>البيانات المرجعية الأساسية</h4>
+                            <p>المناطق والمدن، فئات المركبات VIP، وأنواع الخدمات التشغيلية.</p>
+                        </div>
+                    </a>
+                    <a href="#sec-fleet" class="toc-item">
+                        <div class="toc-num">04</div>
+                        <div class="toc-body">
+                            <h4>أسطول المركبات والوثائق</h4>
+                            <p>تسجيل المركبات، ربط الوثائق، الفحص الدوري، والتأمين الشامل.</p>
+                        </div>
+                    </a>
+                    <a href="#sec-pricing" class="toc-item">
+                        <div class="toc-num">05</div>
+                        <div class="toc-body">
+                            <h4>محرك قواعد التسعير والتجديد</h4>
+                            <p>هندسة الأسعار، الكيلومتر والانتظار، كشف التداخل، والتجديد الدوري.</p>
+                        </div>
+                    </a>
+                    <a href="#sec-packages" class="toc-item">
+                        <div class="toc-num">06</div>
+                        <div class="toc-body">
+                            <h4>باقات الحجز والرحلات المجمعة</h4>
+                            <p>عروض المشتركين، رحلات المطار المجمعة، والتسعير المخصص.</p>
+                        </div>
+                    </a>
+                    <a href="#sec-messaging" class="toc-item">
+                        <div class="toc-num">07</div>
+                        <div class="toc-body">
+                            <h4>مركز الرسائل وقوالب SMS</h4>
+                            <p>الأرصدة، القنوات، وقوالب الإشعارات التلقائية بالمتغيرات الذكية.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- SECTION 0: Introduction & Setup Hierarchy -->
+            <section id="intro" class="manual-section avoid-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">المنهجية التشغيلية</span>
+                        <h2 class="section-title">المقدمة والترتيب المنهجي لتهيئة المنظومة</h2>
+                        <p class="section-desc">
+                            إن لوحة تحكم إدارة سمو الذهبية (Aldikka Admin Dashboard) مبنية على نموذج معمارية مؤسسية محكمة. لتجنب أي أخطاء أثناء استقبال الحجوزات أو احتساب فواتير العملاء أو تخصيص السائقين، يجب تطبيق خطوات التهيئة وفق التسلسل المنطقي التالي:
+                        </p>
+                    </div>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step-item accent">
+                        <div class="step-num">1</div>
+                        <div class="step-text">
+                            <strong>الخطوة الأولى (المعلومات العامة والمالية):</strong> ضبط السجل التجاري، الرقم الضريبي (15 رقم)، وضبط نسبة ضريبة القيمة المضافة (15%) وقواعد الفوترة، حتى تنعكس تلقائياً في جميع الفواتير الصادرة.
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-text">
+                            <strong>الخطوة الثانية (حوكمة الوصول والمشرفين):</strong> إنشاء أدوار العمليات (مثل: مدير تشغيل، مدخل بيانات، مشرف مالي) وتعيين الصلاحيات الدقيقة لحماية بيانات العملاء والحسابات المالية.
+                        </div>
+                    </div>
+                    <div class="step-item accent">
+                        <div class="step-num">3</div>
+                        <div class="step-text">
+                            <strong>الخطوة الثالثة (تأسيس البيانات المرجعية Master Data):</strong> إدخال المناطق الجغرافية والمدن أولاً، تليها فئات المركبات (سيدان VIP، SUV، فاخرة)، ثم أنواع الخدمات التشغيلية (نقل مطار، بين المدن، ساعات خاصة).
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-text">
+                            <strong>الخطوة الرابعة (تسجيل أسطول المركبات):</strong> إدخال مركبات الشركة برقم اللوحة والموديل وربطها بالفئات المرجعية، مع إرفاق وثائق التأمين والفحص ورخصة السير.
+                        </div>
+                    </div>
+                    <div class="step-item accent">
+                        <div class="step-num">5</div>
+                        <div class="step-text">
+                            <strong>الخطوة الخامسة (هندسة محرك التسعير):</strong> ربط كل خدمة بفئة المركبة والمنطقة، وتحديد سعر البداية والكيلومتر والانتظار، وتفعيل ميزة كشف التعارضات التلقائي.
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">6</div>
+                        <div class="step-text">
+                            <strong>الخطوة السادسة (تفعيل مركز الرسائل والإشعارات):</strong> التحقق من رصيد بوابات الرسائل وضبط قوالب SMS والمتغيرات البرمجية لتصل رسائل التأكيد للعميل والسائق لحظياً.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout tip">
+                    <div class="callout-icon">💡</div>
+                    <div>
+                        <strong>قاعدة ذهبية في تهيئة النظام:</strong>
+                        لا يمكن إضافة مركبة قبل إنشاء "فئات المركبات"، ولا يمكن تفعيل قاعدة تسعير قبل تعريف "المنطقة" و"نوع الخدمة" و"فئة المركبة". التزامك بهذا الترتيب يوفر أكثر من 80% من وقت الإعداد التشغيلي.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 1: SYSTEM SETTINGS (REVISED & ACCURATE) -->
+            <!-- ========================================================================= -->
+            <section id="sec-settings" class="manual-section page-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">الفصل الأول</span>
+                        <h2 class="section-title">إعدادات النظام والهوية المؤسسية</h2>
+                        <p class="section-desc">
+                            يختص هذا الفصل بتهيئة الهيكل العام للمنظومة: استعراض بوابة الإعدادات المركزية، ضبط بيانات المنشأة القانونية والسجل التجاري، رفع الشعار ورمز QR للفواتير الإلكترونية، قنوات الاتصال والتواصل الاجتماعي، نسب الضريبة 15%، الفوترة التلقائية، وبوابات التسويق.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 1.1 Settings Hub Overview -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">1.1 بوابة ومركز الإعدادات العامة (Settings Hub)</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>القائمة الجانبية</span> &gt;
+                        <b>إعدادات النظام (Settings)</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة بوابة الإعدادات المركزية وبطاقات أقسام التهيئة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/01_settings_hub_overview.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/01_settings_hub_overview.png" alt="بوابة الإعدادات" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (1-1): بطاقات الوصول السريع لأقسام إعدادات النظام، بوابات التسويق، المسؤولين، والأدوار.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>بطاقة القسم</th>
+                                    <th>المسار في النظام</th>
+                                    <th>الوصف والمحتوى التشغيلي</th>
+                                    <th>مستوى الصلاحية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">إعدادات النظام (System)</span></td>
+                                    <td><span class="field-type">/dashboard/settings/system</span></td>
+                                    <td>البيانات القانونية، السجل التجاري، الرقم الضريبي، الشعار، الاتصال، الفواتير، والضرائب.</td>
+                                    <td><span class="badge-req required">مدير عام / SuperAdmin</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">بوابات التسويق (Marketing)</span></td>
+                                    <td><span class="field-type">/dashboard/settings/marketing</span></td>
+                                    <td>تخصيص محتوى واجهة العملاء وبوابات الشركات والشرائح الترويجية (Hero Slides).</td>
+                                    <td><span class="badge-req required">مدير تسويق / مسؤول النظام</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">إدارة المسؤولين (Admins)</span></td>
+                                    <td><span class="field-type">/dashboard/settings/admins</span></td>
+                                    <td>إدارة حسابات موظفي الإدارة، تفعيل/تعطيل المشرفين، وتعيين الأدوار (انظر الفصل الثاني).</td>
+                                    <td><span class="badge-req required">مدير النظام</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">الأدوار والصلاحيات (Roles)</span></td>
+                                    <td><span class="field-type">/dashboard/settings/roles</span></td>
+                                    <td>هيكلة مصفوفة الصلاحيات (قراءة، إنشاء، تعديل، حذف) لكل قسم (انظر الفصل الثاني).</td>
+                                    <td><span class="badge-req required">مدير النظام</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 1.2 Company Info & Legal Docs -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">1.2 معلومات المنشأة، السجلات القانونية، والشعار</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>إعدادات النظام</span> &gt;
+                        <b>إعدادات النظام العامة</b> &gt;
+                        <span>قسم: معلومات وشعار الشركة</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة معلومات وشعار الشركة، السجل التجاري، والوثائق المرفوعة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/02_system_settings_company_info.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/02_system_settings_company_info.png" alt="معلومات وشعار الشركة" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (1-2): البيانات الرسمية لشركة سمو الذهبية، الشعار، رمز QR، والشهادات الرسمية.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>اسم الحقل / المستند</th>
+                                    <th>النوع</th>
+                                    <th>الإلزامية</th>
+                                    <th>الأثر التشغيلي والقانوني</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">اسم الشركة</span></td>
+                                    <td><span class="field-type">نص عربي</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>"شركة سمو الذهبية للنقل البري"؛ يظهر في ترويسة جميع الفواتير الضريبية وتذييل العقود.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">رقم السجل التجاري (CR Number)</span></td>
+                                    <td><span class="field-type">رقمي (10 خانات)</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>السجل التجاري الصادر من وزارة التجارة؛ أساسي للامتثال النظامي للأنشطة والفوترة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">الرقم الضريبي (VAT Number)</span></td>
+                                    <td><span class="field-type">رقمي (15 خانة)</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>الرقم الضريبي الموحد للمنشأة؛ متطلب إلزامي لهيئة الزكاة والضريبة والجمارك (ZATCA).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">أيام الاحتفاظ بأرشيف الحجوزات</span></td>
+                                    <td><span class="field-type">رقمي (أيام)</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>الفترة الزمنية (افتراضياً: 30 يوماً) لنقل الحجوزات المكتملة إلى الأرشيف لتخفيف قاعدة البيانات.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">شعار الشركة (Company Logo)</span></td>
+                                    <td><span class="field-type">رفع صورة (PNG/SVG)</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>شعار المنشأة الرسمي عالي الدقة؛ يطبع على ترويسة الفواتير الإلكترونية وعروض الأسعار.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">رمز باركود الفاتورة (Invoice QR Code)</span></td>
+                                    <td><span class="field-type">رفع صورة / توليد</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>رمز الاستجابة السريع التوافقي مع متطلبات هيئة الزكاة (الفاتورة الإلكترونية مرحلة 2).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">ملف السجل التجاري (Commercial Registration)</span></td>
+                                    <td><span class="field-type">ملف PDF</span></td>
+                                    <td><span class="badge-req optional">اختياري</span></td>
+                                    <td>نسخة PDF رسمية معتمدة من وثيقة السجل التجاري لحفظها كمرجع قانوني داخل المنظومة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">ملف الشهادة الضريبية (Tax Certificate)</span></td>
+                                    <td><span class="field-type">ملف PDF</span></td>
+                                    <td><span class="badge-req optional">اختياري</span></td>
+                                    <td>شهادة تسجيل ضريبة القيمة المضافة الصادرة من هيئة الزكاة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">حول الشركة (About Company)</span></td>
+                                    <td><span class="field-type">نص طويل</span></td>
+                                    <td><span class="badge-req optional">اختياري</span></td>
+                                    <td>نبذة تعريفية عن نشاط وريادة الشركة في النقل الفاخر تظهر في العروض التعاقدية.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 1.3 Contact & Social Channels -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">1.3 قنوات الاتصال وروابط التواصل المؤسسي</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>إعدادات النظام العامة</span> &gt;
+                        <span>معلومات الاتصال وروابط وسائل التواصل</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة قنوات الاتصال: الهاتف، البريد، وروابط منصات التواصل</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/03_system_settings_contact_and_social.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/03_system_settings_contact_and_social.png" alt="الاتصال والتواصل الاجتماعي" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (1-3): هواتف خدمة العملاء وقنوات الدعم المباشر وروابط المنصات الاجتماعية.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>قناة الاتصال</th>
+                                    <th>النوع</th>
+                                    <th>الأثر التشغيلي في النظام</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">رقم الهاتف الرسمي / الموحد</span></td>
+                                    <td><span class="field-type">رقم هاتف</span></td>
+                                    <td>يظهر في تذييل فواتير العملاء وفي الرسائل الترحيبية SMS للاتصال الفوري بخدمة العملاء.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">البريد الإلكتروني للدعم</span></td>
+                                    <td><span class="field-type">Email</span></td>
+                                    <td>البريد الذي يستقبل استفسارات الحجوزات والشكاوى وتصل منه إشعارات الفواتير التلقائية.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">روابط وسائل التواصل الاجتماعي</span></td>
+                                    <td><span class="field-type">روابط URLs</span></td>
+                                    <td>تشمل حسابات (X / تويتر، انستغرام، لينكد إن، فيسبوك، واتساب) وتظهر في تذييل موقع الحجز وتطبيقات الويب.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 1.4 Invoicing, Tax & Billing -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">1.4 إعدادات الفواتير، الضرائب، والفوترة التلقائية</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>إعدادات النظام العامة</span> &gt;
+                        <span>الفواتير، المظهر، الضريبة، والفوترة التلقائية</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة نصوص الفواتير، نسبة ضريبة VAT 15%، والفوترة التلقائية الشهرية</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/04_system_settings_tax_and_billing.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/04_system_settings_tax_and_billing.png" alt="الضرائب والفوترة التلقائية" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (1-4): معايير احتساب الضريبة، نصوص الفاتورة، وجدولة إصدار الفواتير الدورية للشركات.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>الإعداد المالي</th>
+                                    <th>النوع</th>
+                                    <th>القيمة الافتراضية</th>
+                                    <th>الأثر التشغيلي والمحاسبي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">نص رأس الفاتورة (Header Text)</span></td>
+                                    <td><span class="field-type">نص عربي</span></td>
+                                    <td>"فاتورة ضريبية مبسطة"</td>
+                                    <td>العبارة القانونية التي تطبع في قمة الفاتورة الإلكترونية المعتمدة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">نص تذييل الفاتورة (Footer Text)</span></td>
+                                    <td><span class="field-type">نص عربي</span></td>
+                                    <td>"شكراً لاختياركم سمو الذهبية"</td>
+                                    <td>رسالة ختامية وتنبيه نظامي يطبع في أسفل كل فاتورة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">نسبة ضريبة القيمة المضافة (VAT %)</span></td>
+                                    <td><span class="field-type">نسبة مئوية</span></td>
+                                    <td>15%</td>
+                                    <td>النسبة النظامية المحتسبة آلياً على إجمالي الرحلات والخدمات قبل إصدار الفاتورة النهائية.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">حالة الفوترة التلقائية</span></td>
+                                    <td><span class="field-type">مفتاح تبديل (Toggle)</span></td>
+                                    <td>مفعل (Active)</td>
+                                    <td>تفعيل إصدار الفواتير الدورية للشركات آلياً في نهاية دورة الفوترة المحددة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">يوم الفوترة من الشهر</span></td>
+                                    <td><span class="field-type">رقم (1 - 31)</span></td>
+                                    <td>اليوم 1 من كل شهر</td>
+                                    <td>اليوم الذي ينشئ فيه النظام الفواتير المجمعة لجميع حسابات الشركات الآجلة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">أيام مهلة الاستحقاق</span></td>
+                                    <td><span class="field-type">رقم (أيام)</span></td>
+                                    <td>15 يوماً</td>
+                                    <td>المهلة الممنوحة للشركة لسداد الفاتورة قبل تطبيق إجراءات التعليق أو إشعار التأخير.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout warning">
+                        <div class="callout-icon">⚠️</div>
+                        <div>
+                            <strong>ملاحظة مالية هامة:</strong>
+                            ضبط الفوترة التلقائية الشهرية يوفر أكثر من 90% من الجهد اليدوي لقسم المحاسبة؛ حيث يقوم النظام بتجميع كافة رحلات منسوبي الشركة خلال الشهر في فاتورة موحدة بصيغة PDF معتمدة وإرسالها آلياً للبريد المالي للشركة.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1.5 Marketing Portal Settings -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">1.5 بوابات التسويق وإدارة شرائح العروض (Hero Slides)</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>إعدادات النظام</span> &gt;
+                        <b>بوابات التسويق والشركات (Marketing)</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة إدارة شرائح البانر التسويقية المتحركة وعروض الرحلات</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/05_marketing_portal_settings.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/01_system_settings/05_marketing_portal_settings.png" alt="بوابات التسويق" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (1-5): إدارة شرائح البانر التسويقي (Hero Slides) التي تظهر للعملاء في واجهة الحجز.</div>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;">
+                        تتيح هذه الصفحة لفريق التسويق والعمليات التحكم الكامل في البانرات الإعلانية الترويجية في واجهة العملاء وموقع الحجز؛ حيث يمكن إضافة صور عالية الجودة لأسطول سيارات VIP، وتحديد نصوص العناوين الترويجية وأزرار الحجز المباشر مع ميزة إعادة ترتيب الشرائح بحرية.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 2: ADMINS & ROLES RBAC -->
+            <!-- ========================================================================= -->
+            <section id="sec-admins" class="manual-section page-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">الفصل الثاني</span>
+                        <h2 class="section-title">إدارة المشرفين والصلاحيات (RBAC)</h2>
+                        <p class="section-desc">
+                            نظام التحكم في الوصول القائم على الأدوار (Role-Based Access Control)؛ يتيح إنشاء وتوزيع حسابات موظفي الشركة، ومنح الصلاحيات بدقة متناهية (عرض، إضافة، تعديل، حذف) عبر جميع أقسام المنظومة.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2.1 Admins List -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">2.1 سجل المشرفين وإدارة الحسابات</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>القائمة الجانبية</span> &gt;
+                        <b>إدارة المشرفين</b> &gt;
+                        <span>قائمة المسؤولين</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة استعراض حسابات المشرفين وحالاتهم التشغيلية</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/01_admins_list.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/01_admins_list.png" alt="قائمة المشرفين" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (2-1): قائمة المسؤولين المسجلين مع أزرار الإجراءات السريعة.</div>
+                    </div>
+                </div>
+
+                <!-- 2.2 Add Admin Modal -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">2.2 نموذج إضافة مسؤول جديد للنظام</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>النقر على زر</span>
+                        <b>إضافة مسؤول (UserPlus)</b> في أعلى يسار الشاشة
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ نافذة الحوار المنبثقة: إنشاء حساب مسؤول جديد</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/02_add_admin_modal.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/02_add_admin_modal.png" alt="إضافة مسؤول" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (2-2): نافذة تعبئة بيانات المشرف وتحديد الدور الوظيفي.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>اسم الحقل</th>
+                                    <th>نوع المدخل</th>
+                                    <th>الإلزامية</th>
+                                    <th>إرشادات الاستخدام والأثر</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">الاسم الكامل</span></td>
+                                    <td><span class="field-type">نص</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>اسم الموظف أو المشرف ثلاثياً، يظهر في سجل التدقيق (Audit Logs) لجميع الإجراءات.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">البريد الإلكتروني</span></td>
+                                    <td><span class="field-type">Email</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>اسم المستخدم لتسجيل الدخول للوحة التحكم، ويجب أن يكون فريداً على مستوى النظام.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">رقم الهاتف</span></td>
+                                    <td><span class="field-type">هاتف محمول</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>يستخدم في التحقق الثنائي (2FA) وإرسال إشعارات الأمان والطوارئ.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">الدور الوظيفي (Role)</span></td>
+                                    <td><span class="field-type">قائمة منسدلة</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>اختيار الدور الممنوح للحساب (مثل: مدير عام، مأمور عمليات، محاسب، دعم فني).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">كلمة المرور وتأكيدها</span></td>
+                                    <td><span class="field-type">Password</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>يجب ألا تقل عن 8 خانات وتحتوي على مزيج من الأحرف الكبيرة والأرقام والرموز.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2.3 Roles Overview -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">2.3 بطاقات الأدوار الإدارية والوظيفية</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>إدارة المشرفين</span> &gt;
+                        <span>الأدوار والصلاحيات</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة استعراض الأدوار الوظيفية المعتمدة وعدد المستخدمين</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/03_roles_permissions_overview.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/03_roles_permissions_overview.png" alt="الأدوار والصلاحيات" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (2-3): بطاقات الأدوار القياسية وموجز الصلاحيات المرتبطة بكل دور.</div>
+                    </div>
+                </div>
+
+                <!-- 2.4 Permissions Matrix -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">2.4 مصفوفة الصلاحيات التفصيلية وحوكمة العمليات</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>إدارة المشرفين</span> &gt;
+                        <span>الأدوار</span> &gt;
+                        <b>مصفوفة الصلاحيات (Permissions Matrix)</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ مصفوفة الصلاحيات المتقاطعة (CRUD) عبر كل وحدات المنظومة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/04_role_permissions_matrix.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/02_admins_and_roles/04_role_permissions_matrix.png" alt="مصفوفة الصلاحيات" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (2-4): جدول ضبط صلاحيات (قراءة، إنشاء، تعديل، حذف) لكل قسم ونموذج.</div>
+                    </div>
+
+                    <div class="callout important">
+                        <div class="callout-icon">🔒</div>
+                        <div>
+                            <strong>معيار الأمان وحماية البيانات:</strong>
+                            يوصى بشدة بتطبيق مبدأ "أدنى الصلاحيات الضرورية" (Least Privilege). لا تمنح صلاحية "الحذف" أو "تعديل التسعير" إلا لمديري العمليات والمدير العام المالي منعاً لأي تجاوزات غير مقصودة.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 3: MASTER DATA -->
+            <!-- ========================================================================= -->
+            <section id="sec-master" class="manual-section page-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">الفصل الثالث</span>
+                        <h2 class="section-title">البيانات المرجعية الأساسية (Master Data)</h2>
+                        <p class="section-desc">
+                            العمود الفقري لمنظومة سمو الذهبية؛ تشمل تعريف النطاقات الجغرافية والمدن، تصنيف فئات الأسطول VIP، وتحديد أنواع الخدمات التشغيلية وأنماط احتساب تكلفتها.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3.1 Overview -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">3.1 المركز المرجعي للبيانات الأساسية</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>القائمة الجانبية</span> &gt;
+                        <b>البيانات المرجعية</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ لوحة التنقل السريع بين أقسام البيانات المرجعية</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/01_master_data_overview.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/01_master_data_overview.png" alt="نظرة عامة على البيانات المرجعية" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (3-1): بوابات الوصول المباشر لتهيئة المناطق، فئات المركبات، وأنواع الخدمات.</div>
+                    </div>
+                </div>
+
+                <!-- 3.2 & 3.3 Regions -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">3.2 المناطق والمدن التشغيلية وإضافة منطقة جديدة</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>البيانات المرجعية</span> &gt;
+                        <b>المناطق والمدن</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ سجل المناطق الجغرافية والمدن المفعلة في الخدمة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/02_regions_list.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/02_regions_list.png" alt="قائمة المناطق" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (3-2): جدول المناطق الجغرافية ومؤشرات النطاقات التشغيلية.</div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ نافذة إضافة منطقة جغرافية أو مدينة تشغيلية جديدة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/03_add_region_modal.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/03_add_region_modal.png" alt="إضافة منطقة" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (3-3): نموذج تعريف اسم المنطقة والرمز الجغرافي وحالتها.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>اسم الحقل</th>
+                                    <th>النوع</th>
+                                    <th>الإلزامية</th>
+                                    <th>الوصف والأثر في الحجز</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">اسم المنطقة (عربي)</span></td>
+                                    <td><span class="field-type">نص</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>مثال: "منطقة الرياض"، "المنطقة الشرقية"؛ يظهر للعميل لاختيار مدينة الانطلاق أو الوجهة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">Region Name (English)</span></td>
+                                    <td><span class="field-type">Text</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>الاسم باللغة الإنجليزية، مثل: "Riyadh Region"، "Makkah Region".</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">رمز المنطقة (Code)</span></td>
+                                    <td><span class="field-type">رمز فريد</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>كود جغرافي مميز (مثل: RUH, JED, DMM) يستخدم في تسعير المسارات وحساب التكلفة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">حالة التشغيل (Status)</span></td>
+                                    <td><span class="field-type">تبديل (نشط/معطل)</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>في حال تعطيل المنطقة، يتم حجب إمكانية طلب رحلات جديدة تنطلق منها أو تنتهي فيها تلقائياً.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3.4 & 3.5 Vehicle Types -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">3.3 فئات أسطول المركبات (Vehicle Categories)</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>البيانات المرجعية</span> &gt;
+                        <b>فئات المركبات</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ سجل فئات المركبات المعتمدة ومواصفاتها</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/04_vehicle_types_list.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/04_vehicle_types_list.png" alt="فئات المركبات" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (3-4): قائمة الفئات (VIP سيدان، فاخرة، عائلية) وسعات الركاب والأمتعة.</div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ نموذج استحداث وتخصيص فئة مركبات جديدة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/05_add_vehicle_type_modal.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/05_add_vehicle_type_modal.png" alt="إضافة فئة مركبة" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (3-5): نافذة تحديد اسم الفئة، سعة الحقائب والركاب، وصورة الأيقونة التوضيحية.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>الحقل</th>
+                                    <th>النوع</th>
+                                    <th>الإلزامية</th>
+                                    <th>الشرح والغاية الميدانية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">اسم الفئة (عربي/إنجليزي)</span></td>
+                                    <td><span class="field-type">نصوص ثنائية اللغة</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>مثال: "سيدان فاخرة - Sedan VIP" أو "مرسيدس مايباخ - Maybach Ultra".</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">سعة الركاب (Passengers)</span></td>
+                                    <td><span class="field-type">رقم صحيح</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>أقصى عدد ركاب مسموح به في الرحلة؛ يمنع الحجز إذا تجاوز عدد ركاب العميل هذه السعة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">سعة الأمتعة (Luggage Capacity)</span></td>
+                                    <td><span class="field-type">رقم صحيح</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>عدد الحقائب الكبيرة المسموح بها في صندوق المركبة، مفيد جداً في حجوزات استقبال المطار.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">صورة الفئة التوضيحية</span></td>
+                                    <td><span class="field-type">رفع ملف صورة</span></td>
+                                    <td><span class="badge-req optional">اختياري</span></td>
+                                    <td>صورة ظلية أو ثلاثية الأبعاد للمركبة تظهر للعميل في واجهة التطبيق أثناء اختيار المركبة.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3.6 & 3.7 Services -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">3.4 أنواع الخدمات التشغيلية وأنماط التسعير</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>البيانات المرجعية</span> &gt;
+                        <b>أنواع الخدمات</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ سجل أنواع الخدمات التشغيلية المعتمدة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/06_services_list.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/06_services_list.png" alt="أنواع الخدمات" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (3-6): جدول الخدمات وأنماط التسعير المرتبطة بها (ثابت، مسافة، وقت، هجين).</div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ نافذة إضافة نوع خدمة جديد وتحديد نمط التسعير</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/07_add_service_modal.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/03_master_data/07_add_service_modal.png" alt="إضافة خدمة" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (3-7): نموذج تعريف الخدمة واختيار نمط الاحتساب الافتراضي.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>نمط التسعير</th>
+                                    <th>آلية الاحتساب</th>
+                                    <th>حالة الاستخدام التشغيلي المثالية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">سعر ثابت (Flat Rate)</span></td>
+                                    <td>قيمة نقدية محددة مسبقاً للرحلة بصرف النظر عن الوقت المستغرق.</td>
+                                    <td>رحلات نقل المطار (من/إلى المطار)، أو الرحلات المحددة بين المدن الرئيسية.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">احتساب بالمسافة والوقت (Metered)</span></td>
+                                    <td>سعر فتح العداد + تكلفة الكيلومتر المقطوع + تكلفة دقيقة الرحلة والانتظار.</td>
+                                    <td>الرحلات الداخلية داخل المدينة والتوصيل الفوري والمشاوير الحرة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">احتساب بالساعات (Hourly / Chauffeur)</span></td>
+                                    <td>مبلغ ثابت لكل ساعة حجز مع سقف كيلومترات محدد (مثل 25 كم/ساعة).</td>
+                                    <td>تأجير السائق الخاص، جولات كبار الشخصيات، الاجتماعات الرسمية والمؤتمرات.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 4: VEHICLES FLEET -->
+            <!-- ========================================================================= -->
+            <section id="sec-fleet" class="manual-section page-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">الفصل الرابع</span>
+                        <h2 class="section-title">إدارة أسطول المركبات والوثائق</h2>
+                        <p class="section-desc">
+                            سجل الحصر الشامل لمركبات الشركة؛ يتضمن إدارة مواصفات السيارات، متابعة دورة حياة التراخيص الرسمية، فحص التأمين الدوري، وتوثيق الصور والمستندات.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4.1 Fleet List -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">4.1 جدول الأسطول والفلاتر التشغيلية</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>القائمة الجانبية</span> &gt;
+                        <b>أسطول المركبات</b> &gt;
+                        <span>جميع المركبات</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ سجل مركبات الأسطول وحالات التشغيل وتواريخ الوثائق</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/01_vehicles_list_and_filters.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/01_vehicles_list_and_filters.png" alt="أسطول المركبات" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (4-1): لوحة متابعة المركبات، السائق المعين، وصلاحية الاستمارة والفحص.</div>
+                    </div>
+                </div>
+
+                <!-- 4.2 Form Step 1: Specs -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">4.2 تسجيل مركبة جديدة - الخطوة 1: المواصفات الفنية</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>النقر على زر</span>
+                        <b>إضافة مركبة جديدة</b> &gt;
+                        <span>تبويب: المواصفات الفنية (Specifications)</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ نموذج تسجيل المركبة - إدخال الماركة، الموديل ورقم اللوحة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/02_create_vehicle_specifications.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/02_create_vehicle_specifications.png" alt="مواصفات المركبة" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (4-2): الخطوة الأولى لإدخال بيانات المركبة الأساسية وتصنيفها الفئوي.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>الحقل المطلوب</th>
+                                    <th>نوع الإدخال</th>
+                                    <th>مثال توضيحي</th>
+                                    <th>ملاحظات الضبط والربط</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">الشركة المصنعة (Make)</span></td>
+                                    <td><span class="field-type">نص / قائمة</span></td>
+                                    <td>Mercedes-Benz, BMW, Lexus</td>
+                                    <td>الماركة العالمية المعتمدة للسيارة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">طراز السيارة (Model)</span></td>
+                                    <td><span class="field-type">نص</span></td>
+                                    <td>S-Class 500, 7 Series, LX600</td>
+                                    <td>يظهر للعميل في تفاصيل تتبع الحجز.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">سنة الصنع (Year)</span></td>
+                                    <td><span class="field-type">رقم السنة</span></td>
+                                    <td>2024, 2025, 2026</td>
+                                    <td>يخضع لمعايير الهيئة العامة للنقل (اشتراط حداثة الموديل).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">رقم اللوحة والأحرف</span></td>
+                                    <td><span class="field-type">نص عربي/إنجليزي</span></td>
+                                    <td>أ ب ج 1234 (ABC 1234)</td>
+                                    <td>المعرف الرسمي للمركبة الذي يستدل به الراكب في صالة المطار أو نقطة الالتقاء.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">الفئة التابعة لها</span></td>
+                                    <td><span class="field-type">قائمة منسدلة</span></td>
+                                    <td>VIP Sedan, Luxury SUV</td>
+                                    <td>يتم جلبها آلياً من فئات المركبات المعرفة في البيانات المرجعية.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">رقم الهيكل (VIN)</span></td>
+                                    <td><span class="field-type">نص (17 حرفاً ورقم)</span></td>
+                                    <td>WDB2221761A123456</td>
+                                    <td>رقم تعريف المركبة الفريد لدى المرور والشركة الصانعة.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4.3 Form Step 2: Ownership & Docs -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">4.3 تسجيل مركبة جديدة - الخطوة 2: الملكية والوثائق الرسمية</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>نموذج المركبة</span> &gt;
+                        <span>تبويب: الملكية والوثائق الرسمية (Ownership & Documents)</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة توثيق بيانات الملكية، رخصة السير، وتواريخ انتهاء الوثائق</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/03_create_vehicle_ownership_and_docs.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/03_create_vehicle_ownership_and_docs.png" alt="ملكية المركبة والوثائق" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (4-3): متابعة الصلاحيات النظامية للتأمين والفحص الدوري وتفاصيل المالك.</div>
+                    </div>
+
+                    <div class="callout tip">
+                        <div class="callout-icon">📅</div>
+                        <div>
+                            <strong>ميزة التنبيه الاستباقي لانتهاء الوثائق:</strong>
+                            يقوم النظام بمراقبة تواريخ "انتهاء التأمين" و"الفحص الدوري" المدخلة هنا، ويرسل تنبيهاً تشغيلياً للمشرف قبل 30 يوماً و 7 أيام من تاريخ الانتهاء، ويقوم بتحويل حالة المركبة تلقائياً إلى "غير متاحة" إذا انتهت صلاحية التأمين حماية للمنشأة.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4.4 Form Step 3: Images & Approval -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">4.4 تسجيل مركبة جديدة - الخطوة 3: رفع الصور والمستندات</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>نموذج المركبة</span> &gt;
+                        <span>تبويب: الصور والمستندات (Media & Approval)</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ واجهة رفع صور السيارة، وثيقة التأمين، وصورة الاستمارة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/04_create_vehicle_images_upload.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/04_vehicles_fleet/04_create_vehicle_images_upload.png" alt="رفع صور المركبة" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (4-4): رفع المستندات الثبوتية والصور الخارجية والداخلية للمركبة.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 5: PRICING RULES -->
+            <!-- ========================================================================= -->
+            <section id="sec-pricing" class="manual-section page-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">الفصل الخامس</span>
+                        <h2 class="section-title">محرك قواعد التسعير والتجديد الدوري</h2>
+                        <p class="section-desc">
+                            أحد أكثر المحركات تطوراً في المنظومة؛ يتيح هندسة أسعار دقيقة بناءً على تقاطع (الخدمة × الفئة × النطاق الجغرافي)، مع كشف التضارب وتسهيل التجديد السنوي لجميع القواعد بضغطة زر واحدة.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5.1 Grouped View -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">5.1 استعراض قواعد التسعير بالعرض المجمع الذكي</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>القائمة الجانبية</span> &gt;
+                        <b>قواعد التسعير</b> &gt;
+                        <span>العرض المجمع (Grouped View)</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة تجميع قواعد التسعير حسب نوع الخدمة وفئة المركبة</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/01_pricing_rules_grouped_view.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/01_pricing_rules_grouped_view.png" alt="عرض قواعد التسعير المجمع" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (5-1): تجميع ذكي يمنع التشتت ويعرض عدد القواعد السارية داخل كل خدمة وفئة.</div>
+                    </div>
+                </div>
+
+                <!-- 5.2 Expanded Group -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">5.2 تفاصيل ومعايير الاحتساب داخل المجموعة</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>النقر على بطاقة المجموعة المجمعة لتوسيع جدول تفاصيلها</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ تفاصيل قواعد التسعير: السعر الأساسي، سعر الكيلو، والانتظار</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/02_pricing_rules_expanded_group.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/02_pricing_rules_expanded_group.png" alt="تفاصيل مجموعة التسعير" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (5-2): جدول التكلفة التفصيلية، فترات الصلاحية، وحالة النشاط.</div>
+                    </div>
+                </div>
+
+                <!-- 5.3 Add Rule Modal -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">5.3 نموذج إضافة قاعدة تسعير ذكية جديدة</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>النقر على زر</span>
+                        <b>إضافة قاعدة تسعير جديدة</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ نافذة ضبط معايير ومقاييس التسعير وتواريخ الصلاحية</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/03_add_pricing_rule_modal.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/03_add_pricing_rule_modal.png" alt="إضافة قاعدة تسعير" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (5-3): نموذج تعريف مدخلات الأجرة، فترات السماح المجانية، وغرامة الإلغاء.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>المعامل المالي</th>
+                                    <th>الوحدة</th>
+                                    <th>مثال</th>
+                                    <th>طريقة الحساب والأثر التشغيلي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">الأجرة الأساسية (Base Fare)</span></td>
+                                    <td>ريال سعودي (SAR)</td>
+                                    <td>50 SAR</td>
+                                    <td>المبلغ الثابت الذي يبدأ به احتساب الرحلة بمجرد ركوب العميل وانطلاق الرحلة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">سعر الكيلومتر (Per KM)</span></td>
+                                    <td>SAR / كم</td>
+                                    <td>3.5 SAR</td>
+                                    <td>المبلغ المضاف عن كل كيلومتر يقطعه السائق وفق تتبع الـ GPS الفعلي.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">سعر الدقيقة (Per Minute)</span></td>
+                                    <td>SAR / دقيقة</td>
+                                    <td>1.0 SAR</td>
+                                    <td>تكلفة وقت الرحلة أثناء السير وحالات التوقف المروري الميداني.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">وقت الانتظار المجاني</span></td>
+                                    <td>دقائق</td>
+                                    <td>15 دقيقة</td>
+                                    <td>فترة سماح مجانية يمنحها النظام للراكب بعد وصول السائق إلى موقع الالتقاء.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">سعر دقيقة الانتظار الإضافي</span></td>
+                                    <td>SAR / دقيقة</td>
+                                    <td>1.5 SAR</td>
+                                    <td>يبدأ احتسابه تلقائياً فور استنفاد دقائق وقت الانتظار المجاني.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">الحد الأدنى للأجرة (Minimum Fare)</span></td>
+                                    <td>SAR</td>
+                                    <td>75 SAR</td>
+                                    <td>أقل تكلفة يمكن أن يدفعها العميل للرحلة حتى وإن كانت المسافة قصيرة جداً.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">رسوم الإلغاء (Cancellation Fee)</span></td>
+                                    <td>SAR</td>
+                                    <td>40 SAR</td>
+                                    <td>تخصم من العميل وتودع للسائق إذا تم إلغاء الرحلة بعد تحرك السائق أو تجاوزه مهلة الإلغاء.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout warning">
+                        <div class="callout-icon">🛡️</div>
+                        <div>
+                            <strong>نظام منع التضارب الذكي (Conflict Prevention Engine):</strong>
+                            يحتوي النظام على خوارزمية ذكية تفحص التواريخ والفئات فور الضغط على "حفظ". إذا وجدت قاعدة تسعير نشطة أخرى لنفس (الخدمة + الفئة + المنطقة) تتداخل في نطاق التواريخ، سيرفض النظام الحفظ ويظهر تنبيهاً يوضح رقم القاعدة المتداخلة لمنع حدوث أي فوضى سعرية في تطبيق العميل.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5.4 Renew Modal -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">5.4 معالج التجديد السنوي والدوري لقواعد التسعير</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>النقر على زر</span>
+                        <b>تجديد القواعد السنوية (Renew Pricing)</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ معالج النسخ والتجديد السنوي المجمع مع تطبيق نسب الزيادة المئوية</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/04_renew_pricing_rules_modal.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/05_pricing_rules/04_renew_pricing_rules_modal.png" alt="تجديد قواعد التسعير" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (5-4): أداة الإنتاجية العالية لتمديد صلاحية قواعد التسعير للعام الجديد دفعة واحدة.</div>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;">
+                        بدلاً من تعديل عشرات القواعد واحدة تلو الأخرى في نهاية كل عام، تتيح هذه النافذة تحديد السنة الحالية كـ "مصدر"، وتحديد السنة الجديدة كـ "هدف"، مع خيار اختياري لتطبيق زيادة سنوية عامة (مثل 5% أو 10%)؛ ليقوم النظام بنسخ كافة القواعد وتعديل تواريخها وأسعارها تلقائياً خلال ثوانٍ معدودة.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 6: BOOKING PACKAGES -->
+            <!-- ========================================================================= -->
+            <section id="sec-packages" class="manual-section page-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">الفصل السادس</span>
+                        <h2 class="section-title">باقات الحجز والعروض المجدولة</h2>
+                        <p class="section-desc">
+                            تصميم باقات مسبقة الدفع وعروض رحلات مجمعة مخصصة للشركات، الفنادق الشريكة، وكبار الشخصيات؛ تسهم في رفع ولاء العملاء وتوفير تدفق نقدي مسبق للمنشأة.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6.1 Packages List -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">6.1 سجل باقات الحجز والعروض المفعلة</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>القائمة الجانبية</span> &gt;
+                        <b>باقات الحجز</b> &gt;
+                        <span>جميع الباقات</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ شاشة عرض باقات الحجز النشطة وأسعارها وسعاتها</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/06_booking_packages/01_booking_packages_list.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/06_booking_packages/01_booking_packages_list.png" alt="باقات الحجز" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (6-1): قائمة الباقات التسويقية المتاحة للعملاء في التطبيق والموقع الإلكتروني.</div>
+                    </div>
+                </div>
+
+                <!-- 6.2 Create Package Form -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">6.2 نموذج تصميم وإنشاء باقة حجز جديدة</h3>
+                    <div class="breadcrumb-box">
+                        <span>إجراء التشغيل:</span>
+                        <span>النقر على زر</span>
+                        <b>إنشاء باقة جديدة (Create Package)</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ نموذج تحديد اسم الباقة، عدد الرحلات/الساعات، والتسعير الترويجي</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/06_booking_packages/02_create_booking_package_form.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/06_booking_packages/02_create_booking_package_form.png" alt="إنشاء باقة حجز" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (6-2): تعيين مدة الصلاحية، الخصم، وشروط الاستخدام للباقة.</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>اسم الحقل</th>
+                                    <th>النوع</th>
+                                    <th>الإلزامية</th>
+                                    <th>الوصف والأثر التشغيلي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-name">اسم الباقة (عربي/إنجليزي)</span></td>
+                                    <td><span class="field-type">نصوص</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>مثال: "باقة رجال الأعمال الشهرية - 10 رحلات مطار فاخرة".</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">عدد الرحلات أو الساعات</span></td>
+                                    <td><span class="field-type">رقم صحيح</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>الرصيد الذي يضاف لمحفظة العميل عند شراء الباقة ليتم خصم الرحلات منه مباشرة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">مدة الصلاحية (أيام)</span></td>
+                                    <td><span class="field-type">أيام (Days)</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>فترة صلاحية رصيد الباقة (مثل 30 يوماً أو 90 يوماً من تاريخ الشراء).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-name">السعر الإجمالي قبل وبعد الخصم</span></td>
+                                    <td><span class="field-type">عملة SAR</span></td>
+                                    <td><span class="badge-req required">إلزامي</span></td>
+                                    <td>يوضح القيمة الأصلية وقيمة التوفير للتشجيع على الشراء المسبق.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================================= -->
+            <!-- SECTION 7: MESSAGING CENTER -->
+            <!-- ========================================================================= -->
+            <section id="sec-messaging" class="manual-section page-break">
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">الفصل السابع</span>
+                        <h2 class="section-title">مركز الرسائل وقوالب الإشعارات SMS</h2>
+                        <p class="section-desc">
+                            محطة التحكم في الاتصالات الآلية للعملاء والسائقين؛ تتيح مراقبة أرصدة الرسائل النصية القصيرة (SMS)، ضبط بوابات الإرسال، وتخصيص قوالب التنبيهات باستخدام المتغيرات الذكية.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7.1 Overview -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">7.1 نظرة عامة على مركز الرسائل والأرصدة</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>القائمة الجانبية</span> &gt;
+                        <b>مركز الرسائل</b> &gt;
+                        <span>الرئيسية والإحصائيات</span>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ لوحة مراقبة معدلات إرسال الرسائل ورصيد بوابة SMS المتبقي</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/07_messaging_center/01_messaging_center_overview.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/07_messaging_center/01_messaging_center_overview.png" alt="مركز الرسائل" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (7-1): عدادات الرسائل المرسلة بنجاح، حالات الفشل، والرصيد التشغيلي للبوابة.</div>
+                    </div>
+                </div>
+
+                <!-- 7.2 Templates List -->
+                <div class="subsection-block avoid-break">
+                    <h3 class="subsection-title">7.2 قوالب الرسائل النصية القصيرة والمتغيرات التلقائية</h3>
+                    <div class="breadcrumb-box">
+                        <span>مسار الوصول:</span>
+                        <span>مركز الرسائل</span> &gt;
+                        <b>قوالب الرسائل (SMS Templates)</b>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="screenshot-title">🖥️ قائمة قوالب الإشعارات التلقائية لمراحل دورة حياة الحجز</div>
+                            <div class="screenshot-actions">
+                                <a href="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/07_messaging_center/02_sms_templates_list.png" target="_blank">عرض بدقة كاملة ↗</a>
+                            </div>
+                        </div>
+                        <div class="screenshot-img-wrap">
+                            <img src="https://s3.protosoftdev.org/tripvip-assets/user-manual/system-setup/07_messaging_center/02_sms_templates_list.png" alt="قوالب الرسائل النصية" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">الشكل (7-2): قوالب (تأكيد الحجز، تعيين السائق، وصول المركبة، كود التحقق OTP).</div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>رمز المتغير البرمجي</th>
+                                    <th>ما يحل محله تلقائياً في الرسالة</th>
+                                    <th>مثال على نص الرسالة الفعلي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="field-type">{{customer_name}}</span></td>
+                                    <td>اسم العميل المسجل في الحجز</td>
+                                    <td>"عزيزي {{customer_name}}، تم تأكيد حجزك رقم..."</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-type">{{booking_reference}}</span></td>
+                                    <td>رقم الحجز المرجعي الفريد</td>
+                                    <td>"...رقم الحجز: {{booking_reference}}"</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-type">{{driver_name}}</span></td>
+                                    <td>اسم السائق المخصص لتنفيذ الرحلة</td>
+                                    <td>"كابتن الرحلة: {{driver_name}} في انتظارك"</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-type">{{car_plate}}</span></td>
+                                    <td>رقم لوحة المركبة ونوعها</td>
+                                    <td>"المركبة: مرسيدس S500 - لوحة: {{car_plate}}"</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="field-type">{{otp_code}}</span></td>
+                                    <td>رمز التحقق الأمني السريع لإنهاء الرحلة</td>
+                                    <td>"رمز بدء/إنهاء الرحلة هو: {{otp_code}}"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout tip">
+                        <div class="callout-icon">💬</div>
+                        <div>
+                            <strong>نصيحة لصياغة القوالب:</strong>
+                            احرص دائماً على عدم تجاوز نص الرسالة المترجم شاملاً المتغيرات طول 70 حرفاً للرسالة العربية الواحدة أو 160 حرفاً للرسالة الإنجليزية لتجنب احتساب تكلفتين للرسالة الواحدة من رصيد المنشأة.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manual Footer -->
+            <footer class="manual-footer avoid-break">
+                <p><strong>شركة سمو الذهبية لخدمات النقل الفاخر (Aldikka VIP)</strong></p>
+                <p style="margin-top: 4px; color: #94a3b8;">
+                    وثيقة دليل المستخدم الرسمي - الإصدار الأول: مرحلة تهيئة وتأسيس النظام © 2026 جميع الحقوق محفوظة.
+                </p>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link, .toc-item').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                const activeSidebarLink = document.querySelector(`.nav-link[href="${targetId}"]`);
+                if (activeSidebarLink) {
+                    activeSidebarLink.classList.add('active');
+                }
+            }
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    l.classList.toggle('active', l.getAttribute('href') === `#${id}`);
+                });
+            }
+        });
+    }, {
+        rootMargin: '-20% 0px -70% 0px'
+    });
+
+    document.querySelectorAll('.manual-section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
